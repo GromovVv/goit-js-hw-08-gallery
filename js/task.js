@@ -37,21 +37,31 @@ const getBigUrl = (event) => {
     openModal();
 }
 
-console.log(bigImgUrl);
 const openModal = (event) => {
-    modalImg.setAttribute('src', `${bigImgUrl}`)
-    modal.classList.add('is-open');    
+    modalImg.setAttribute('src', `${bigImgUrl}`);
+    modal.classList.add('is-open');  
+    window.addEventListener("keydown", escCloseModal);
+    
 }
 
-const gallaryClose = (event) => {
+const closeModal = (event) => {
     modalImg.removeAttribute('src');
     modal.classList.remove('is-open');
+    window.removeEventListener("keydown", escCloseModal);
 }
 
 const btn = document.querySelector('.lightbox__button');
-btn.addEventListener('click', gallaryClose)
+btn.addEventListener('click', closeModal)
 
 const overlay = document.querySelector('.lightbox__overlay');
-overlay.addEventListener('click', gallaryClose)
+overlay.addEventListener('click', closeModal)
+
+const escCloseModal = (event) => {
+    if (event.code === "Escape"){
+        closeModal();
+    }
+}
+
+
 
 listRef.addEventListener('click', getBigUrl);
