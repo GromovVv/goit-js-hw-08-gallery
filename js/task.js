@@ -51,4 +51,7 @@ const gallaryClose = (event) => {
 const btn = document.querySelector('.lightbox__button');
 btn.addEventListener('click', gallaryClose)
 
+const overlay = document.querySelector('.lightbox__overlay');
+overlay.addEventListener('click', gallaryClose)
+
 listRef.addEventListener('click', getBigUrl);
